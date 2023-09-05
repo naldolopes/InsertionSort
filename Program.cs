@@ -2,50 +2,67 @@
 
 class Program
 {
-    static void insertionSort(int[] arr)
+    static void InsertionSort(int[] arr)
     {
-        int num, pos_verificada;
+        // Declaração das variáveis
+        int chave, pos_verificada;
 
-        for (int pos = 1; pos < arr.Length; pos++)
+        // Percorre o array
+        for (int i = 1; i < arr.Length; i++)
         {
-            num = arr[pos];
-            pos_verificada = pos - 1;
+            //  Atribui o valor da posição i a chave
+            chave = arr[i];
+            //  Atribui o valor da posição i - 1 a pos_verificada
+            pos_verificada = i - 1;
 
-            // Move os elementos do arr[0..i-1] que são maiores que num
-            // para uma posição à frente de sua posição atual
-            while (pos_verificada >= 0 && num < arr[pos_verificada])
+            // Enquanto a posição verificada for maior ou igual a 0 e o valor da posição verificada for maior que a chave
+            while (pos_verificada >= 0 && arr[pos_verificada] > chave)
             {
+                //  Atribui o valor da posição verificada + 1 a posição verificada
                 arr[pos_verificada + 1] = arr[pos_verificada];
+                //  Decrementa a posição verificada
                 pos_verificada--;
             }
 
-            arr[pos_verificada + 1] = num;
+            // Atribui o valor da chave a posição verificada + 1  
+            arr[pos_verificada + 1] = chave;
         }
     }
 
     public static void Main(string[] args)
     {
+        // Limpa a tela
         Console.Clear();
 
-        int[] vetor = { 5, 3, 7, 6, 2 };
+        // Array de inteiros
+        int[] vetor = { 5, 3, 7, 6, 2, 3 };
 
+        // Exibe o array antes da ordenação
         Console.WriteLine("ARRAY ANTES A ORDENAÇÃO POR INSERÇÃO:");
-
+        // Percorre o array
         for (int i = 0; i < vetor.Length; i++)
         {
+            // Exibe o valor do array na posição i
             Console.Write($"{vetor[i]} ");
         }
 
-        insertionSort(vetor);
+        // Chama o método de ordenação por inserção
+        InsertionSort(vetor);
+
+        // Pula uma linha
         Console.WriteLine("\n");
 
+        // Exibe o array após a ordenação
         Console.WriteLine("\nARRAY APOS A ORDENAÇÃO POR INSERÇÃO:");
 
+        // Percorre o array
         for (int i = 0; i < vetor.Length; i++)
         {
+            // Exibe o valor do array na posição i
             Console.Write($"{vetor[i]} ");
         }
 
+        // Pula uma linha
         Console.WriteLine("\n");
     }
 }
